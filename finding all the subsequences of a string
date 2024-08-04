@@ -1,0 +1,23 @@
+#include <bits/stdc++.h> 
+void recursion(int index,string str,string &temp,vector<string>&ans){
+	if(index==str.length()){
+		if (!temp.empty()) { // Ensure to avoid adding an empty subsequence
+            ans.push_back(temp);
+        }
+		return ;
+	}
+	temp.push_back(str[index]);
+	recursion(index+1,str,temp,ans);
+	temp.pop_back();
+	recursion(index+1,str,temp,ans);
+
+}
+vector<string> subsequences(string str){
+	string temp;
+	vector<string>ans;
+	recursion(0,str,temp,ans);
+	return ans;
+	
+
+	
+}
